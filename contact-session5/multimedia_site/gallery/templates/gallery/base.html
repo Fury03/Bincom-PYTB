@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multimedia Website</title>
+</head>
+<body>
+    <h1>Multimedia Website</h1>
+    <a href="{% url 'home' %}">Home</a> |
+    <a href="{% url 'upload' %}">Upload</a>
+    <hr>
+    {% block content %}{% endblock %}
+</body>
+</html>

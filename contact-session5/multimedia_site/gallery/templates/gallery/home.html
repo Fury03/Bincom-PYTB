@@ -1,0 +1,15 @@
+{% extends "gallery/base.html" %}
+{% block content %}
+    {% for item in items %}
+        <h3>{{ item.title }}</h3>
+        {% if item.media_type == "image" %}
+            <img src="{{ item.file.url }}" width="300">
+        {% elif item.media_type == "audio" %}
+            <audio controls src="{{ item.file.url }}"></audio>
+        {% elif item.media_type == "video" %}
+            <video controls width="400" src="{{ item.file.url }}"></video>
+        {% endif %}
+    {% empty %}
+        <p>Nothing uploaded yet.</p>
+    {% endfor %}
+{% endblock %}
