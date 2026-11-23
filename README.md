@@ -9,10 +9,19 @@ Assignments for the Bincom Academy Python Beginners class (PYTB-1126), one folde
 | `contact-session4` | Read a csv file (`student_scores.csv`) and run linear regression on the data (slope, intercept, R²). | `regression.py`, `student_scores.csv` |
 | `contact-session5` | Multimedia website built with Django: upload and view images, audio and video. | `multimedia_site/` |
 | `contact-session6` | Host the multimedia website on GitHub and deploy it to Heroku. | `README.txt` (steps), deployment files in `contact-session5/multimedia_site/` |
-| `contact-session7` | Post-training test: Fibonacci generator and a Python/Postgres to-do list. | `fibonacci.py`, `todo.py`, `db_config.py` |
+| `contact-session7` | Post-training test: Fibonacci generator and a Python/Postgres to-do list. | `fibonacci.py`, `todo.py`, `create_database.py`, `db_config.py` |
 
 ## Running
 
 - Session 2 and 4: `python3 main.py` / `python3 regression.py student_scores.csv`
-- Session 3 and 7: install `psycopg2-binary`, set your Postgres details in `db_config.py`, create the database (`create_database.py`), then run the scripts.
+- Session 3 and 7 (Postgres):
+  1. Install Postgres and create a virtual environment in the repo root:
+     ```bash
+     sudo apt install -y postgresql python3-venv
+     python3 -m venv .venv
+     .venv/bin/pip install psycopg2-binary python-dotenv
+     ```
+  2. Copy `.env.example` to `.env` and fill in your Postgres details. `db_config.py` reads them from there; `.env` is git-ignored.
+  3. Create the database and table: `cd contact-session7 && ../.venv/bin/python create_database.py`
+  4. Run the scripts, e.g. `../.venv/bin/python todo.py`
 - Session 5: see `contact-session5/README.txt`.

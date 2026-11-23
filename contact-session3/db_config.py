@@ -1,11 +1,16 @@
-import psycopg2
+import os
 
-# Change these to match your Postgres setup
-DB_NAME = "bincom_db"
-DB_USER = "postgres"
-DB_PASSWORD = "your_password"
-DB_HOST = "localhost"
-DB_PORT = "5432"
+import psycopg2
+from dotenv import load_dotenv
+
+# Load the Postgres details from the .env file in the repo root
+load_dotenv(os.path.join(os.path.dirname(__file__), "..", ".env"))
+
+DB_NAME = os.getenv("DB_NAME", "bincom_db")
+DB_USER = os.getenv("DB_USER", "postgres")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
+DB_HOST = os.getenv("DB_HOST", "localhost")
+DB_PORT = os.getenv("DB_PORT", "5432")
 
 
 def get_connection():
